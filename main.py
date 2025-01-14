@@ -13,7 +13,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-service = Service('path to chrome driver')
+service = Service('chromedriver.exe')
 driver = webdriver.Chrome(service=service)
 driver.get('https://web.whatsapp.com')
 
