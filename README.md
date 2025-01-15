@@ -12,3 +12,7 @@ Instructions
 - Extract the ZIP
 - Keep every file together (In the Same Folder)
 - Run the Python File
+
+
+
+**_This program does NOT save any data, and will not ever. (You Can Check The Program For Yourslef)_**
