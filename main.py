@@ -1,5 +1,6 @@
-
-print("Services are Loading, Prepare Device w/Whatsapp\n")
+print()
+print("Note: Messages will appear in console \n")
+print("Ignore and proceed with steps (Just Loading Messages) \n")
 print()
 
 from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
@@ -13,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+
 service = Service('chromedriver.exe')
 driver = webdriver.Chrome(service=service)
 driver.get('https://web.whatsapp.com')
@@ -20,8 +22,9 @@ driver.get('https://web.whatsapp.com')
 if os.name == 'nt':
     _ = os.system('cls')
 
-input('Scan the QR code, open a chat, and press enter. (Ignore Random Text) ')
-
+print('1. Scan QR Code\n')
+print('2. Open A Chat\n')
+print("3. Press Enter\n")
 
 
 # ACTUAL CODE BELOW _--------------------------------------------------------
@@ -82,14 +85,11 @@ def enter_message():
     pyautogui.press('enter')
     
     
-print("1: Automatic")
-print("0: Manual\n")
-mode = int(input('''Select Mode: '''))
-if mode == 1:
-    message_data = whatsapp_output()
-    gpt_data = gpt_output(message_data)
-    clear_terminal()
-    print("Remove Hands 🤚🤚  Off Computer\n")
-    time.sleep(0.75)
-    print("Printing Message...")
-    enter_message()     
+
+message_data = whatsapp_output()
+gpt_data = gpt_output(message_data)
+clear_terminal()
+print("Remove Hands 🤚🤚  Off Computer\n")
+time.sleep(0.75)
+print("Printing Message...")
+enter_message()     
