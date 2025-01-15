@@ -15,4 +15,4 @@ Instructions
 
 
 
-**_This program does NOT save any data, and will not ever. (You Can Check The Program For Yourslef)_**
+**_This program does NOT save any data, and will not ever. (You Can Check The Program For Yourself)_**
