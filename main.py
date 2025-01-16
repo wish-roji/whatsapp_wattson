@@ -36,34 +36,40 @@ def clear_terminal():
 def whatsapp_output():
     WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.XPATH, '//div[@role="listitem"]')))
+
+    # Get all messages
     messages = driver.find_elements(By.XPATH, '//span[@dir="ltr"]//span')
+
     if not messages:
-        print("No messages found!")
+        print("No messages found!\n")
+        print()
     else:
-        for message in messages:
-            message_text = message.text.strip()
-            if message_text:
-                clear_terminal()
-                print("Found Message!\n")
-                print("-----------------")
-                print(message_text)
-                print("-----------------")
-                print()
-                return message_text
+        # The most recent message is the last one in the list of messages
+        most_recent_message = messages[-1]  # Get the last message
+        message_text = most_recent_message.text.strip()
+
+        if message_text:
+            clear_terminal()
+            print("Found Message!\n")
+            print("-----------------")
+            print(message_text)
+            print("-----------------")
+            print()
+            return message_text
 
 
 def gpt_output(message):
     global generated_text
-    model_name = "gpt2-large"  # You can use other models like "gpt2-medium", "gpt2-large", etc.
+    model_name = "gpt2"  # You can use other models like "gpt2-medium", "gpt2-large", etc.
     model = TFGPT2LMHeadModel.from_pretrained(model_name)
     tokenizer = GPT2Tokenizer.from_pretrained(model_name)
     
-    input_text = message
+    input_text = f'{message}'
     
     input_ids = tokenizer.encode(input_text, return_tensors="tf")
     output = model.generate(
         input_ids,
-        max_length=25,           # Adjusted length
+        max_length=100,           # Adjusted length
         num_return_sequences=1,  # Only return one sequence
         no_repeat_ngram_size=2,  # Avoid repeating n-grams
         temperature=0.01,        # Control randomness (lower is less random)
