@@ -24,10 +24,9 @@ if os.name == 'nt':
 
 print('1. Scan QR Code\n')
 print('2. Open A Chat\n')
-print("3. Press Enter\n")
+input("3. Press Enter\n")
 
-
-# ACTUAL CODE BELOW _--------------------------------------------------------
+# ACTUAL CODE BELOW ---------------------------------------------------------
 
 def clear_terminal():
     # For Windows
@@ -65,7 +64,7 @@ def gpt_output(message):
     output = model.generate(
         input_ids,
         max_length=25,           # Adjusted length
-        num_return_sequences=2,  # Only return one sequence
+        num_return_sequences=1,  # Only return one sequence
         no_repeat_ngram_size=2,  # Avoid repeating n-grams
         temperature=0.01,        # Control randomness (lower is less random)
         top_p=0.9,               # Use nucleus sampling
@@ -83,7 +82,6 @@ def enter_message():
     pyautogui.click(x,y)
     pyautogui.typewrite(generated_text, interval=0.05)
     pyautogui.press('enter')
-    
     
 
 message_data = whatsapp_output()
